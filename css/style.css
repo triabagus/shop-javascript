@@ -75,6 +75,7 @@ nav ul li a:hover{
     border-radius: 5px; 
     right:100px;
     width: 302px;
+    z-index:20;
 }
 
 .shopping-cart-header{
@@ -238,7 +239,7 @@ nav ul li a:hover{
     color:var(--text-orange);
 }
 
-span{
+.product-price-btn span{
     font-size: 37px;
 }
 
