@@ -13,7 +13,7 @@
     --main-color: #263b44;
     --main-white: #ffffff;
     --light-text: #ABB0BE;
-    --text-purple:#e91e63;
+    --text-green:#009673;
     --text-orange:#ff5722;
 } 
 
@@ -70,9 +70,10 @@ nav ul li a:hover{
     margin: 20px 0;
     background: var(--main-color);
     display: none;
+    position: absolute;
     padding: 20px;
-    border-radius: 5px;
-    float: right;
+    border-radius: 5px; 
+    right:100px;
     width: 302px;
 }
 
@@ -155,13 +156,112 @@ nav ul li a:hover{
 }
 
 .btn-checkout{
-    background: var(--text-purple);
+    background: var(--text-green);
 }
 
 .btn-cart{
     background: var(--text-orange);
 }
 
+/* product */ 
+.card{ 
+    margin:50px 10px; 
+    width: 500px;
+    height: 350px;
+    border-radius: 7px 7px 7px 7px;
+    float: left; 
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+
+.product-img{
+    float: left;
+    height: 350px;
+    width: 250px;
+}
+
+.product-img img{
+    border-radius:7px 0 0 7px;
+} 
+
+.product-info{
+    float: left;
+    height: 350px;
+    width: 250px;
+    border-radius: 0 7px 10px 0px;
+    background: var(--main-color);
+}
+
+.product-text {
+    height: 260px;
+    width: 250px;
+}
+
+.product-text h1{
+    margin:0 0 0 35px;
+    padding-top:30px;
+    font-size: 32px;
+    color: var(--light-text);
+}
+
+.product-text h2{
+    margin:0 0 20px 35px;
+    font-size:18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color:var(--text-green);
+}
+
+.product-text p{
+    height:150px;
+    margin:0 15px 0 35px;
+    color: var(--light-text);
+    overflow: hidden;
+    font-weight: lighter;
+    font-size: 15px;
+    line-height: 1.6em;
+}
+
+.product-price-btn{
+    height: 103px;
+    width: 250px;
+    margin: 15px 0;
+    position: relative;
+} 
+
+.product-price-btn p{
+    display: inline-block; 
+    margin: 0 0 0 35px;
+    font-size:28px;
+    color:var(--text-orange);
+}
+
+span{
+    font-size: 37px;
+}
+
+.product-price-btn button{
+    float: right;
+    margin: 0 25px 0 15px; 
+    height: 50px;
+    width: 115px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border:transparent;
+    border-radius: 60px;
+    font-size: 18px;
+    color:var(--main-white);
+    letter-spacing: 0.2em;
+    background-color: var(--text-green);
+    outline: none;
+    text-transform: uppercase;
+}
+
+.product-price-btn button:hover {
+    background-color: #009673c4;
+}
 
 @media only screen and (max-width: 600px) {
     .shopping-cart {
