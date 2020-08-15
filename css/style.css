@@ -264,6 +264,52 @@ nav ul li a:hover{
     background-color: #009673c4;
 }
 
+.mt-2{
+    margin-top:2rem;
+}
+
+.cart-table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:100%;
+    display: table;
+    border:1px solid #ccc;
+}
+
+.cart-table tr{
+    border-bottom:1px solid #ddd;
+}
+
+.cart-table tr:nth-child(odd){
+    background: #fff;
+}
+
+.cart-table tr:nth-child(even){
+    background: #f1f1f1;
+}
+
+.cart-table td, .cart-table th{
+    padding:8px 8px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: top;
+} 
+
+.cart-table th{
+    background: var(--main-color);
+    color: #fff;
+    border: 1px solid #263b44;
+}
+
+.cart-table th:first-child, .cart-table td:first-child{
+    padding-left: 16px;
+}
+
+.responsive-table{
+    display: block;
+    overflow-x:auto;
+}
+
 @media only screen and (max-width: 600px) {
     .shopping-cart {
         width:260px;
