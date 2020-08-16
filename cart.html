@@ -81,22 +81,67 @@
         <div class="responsive-table">
             <table class="cart-table">
                 <tr> 
-                    <th>Product</th>
+                    <th></th>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th class="th-qty">QTY</th>
                     <th>Price</th>
-                    <th>QTY</th>
-                    <th>Option</th>
+                    <th>Sub Total</th> 
                 </tr>
                 <tr>
+                    <td>
+                        <ion-icon name="trash"> </ion-icon>
+                    </td>
+                    <td>
+                        <img src="https://via.placeholder.com/200x200/" alt="Age Of Wisdom Tan Graphic Tee" title="" width="45" height="45"> 
+                    </td>
                     <td>Product 1</td>
+                    <td>
+                        <div class="input-group bootstrap-touchspin">
+                            <span class="input-group-btn">
+                                <button class="btns btn-default bootstrap-touchspin-down" type="button">-</button>
+                            </span>
+                            <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;">
+                            </span>
+                            <input type="text" name="" value="1" class="input-qty form-control text-center" style="display: block;">
+                            <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;">
+                            </span>
+                            <span class="input-group-btn">
+                                <button class="btns btn-default bootstrap-touchspin-up" type="button">+</button>
+                            </span>
+                        </div>
+                    </td>
                     <td>100</td>
-                    <td>1</td>
-                    <td>Delete</td>
+                    <td>100</td> 
+                </tr>
+                <tr> 
+                    <td> 
+                        <ion-icon name="trash"> </ion-icon>
+                    </td>
+                    <td>
+                        <img src="https://via.placeholder.com/200x200/" alt="Age Of Wisdom Tan Graphic Tee" title="" width="45" height="45"> 
+                    </td>
+                    <td>Product 2</td><td>
+                        <div class="input-group bootstrap-touchspin">
+                            <span class="input-group-btn">
+                                <button class="btns btn-default bootstrap-touchspin-down" type="button">-</button>
+                            </span>
+                            <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;">
+                            </span>
+                            <input type="text" name="" value="1" class="input-qty form-control text-center" style="display: block;">
+                            <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;">
+                            </span>
+                            <span class="input-group-btn">
+                                <button class="btns btn-default bootstrap-touchspin-up" type="button">+</button>
+                            </span>
+                        </div>
+                    </td>
+                    <td>100</td> 
+                    <td>100</td>
                 </tr>
                 <tr>
-                    <td>Product 2</td>
-                    <td>100</td>
-                    <td>1</td>
-                    <td>Delete</td>
+                    <td colspan="5" ></td>
+                    <td colspan="1"> Total: <span>200</span></td>
                 </tr>
             </table>
         </div>
