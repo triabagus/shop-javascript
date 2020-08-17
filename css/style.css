@@ -273,7 +273,7 @@ nav ul li a:hover{
     border-spacing: 0;
     width:100%;
     display: table;
-    border:1px solid #ccc;
+    border:1px solid #ccc; 
 }
 
 .cart-table tr{
@@ -308,6 +308,8 @@ nav ul li a:hover{
 .responsive-table{
     display: block;
     overflow-x:auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 /* input qty */
