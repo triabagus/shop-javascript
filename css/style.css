@@ -291,7 +291,7 @@ nav ul li a:hover{
 .cart-table td, .cart-table th{
     padding:8px 8px;
     display: table-cell;
-    text-align: left;
+    text-align: center;
     vertical-align: top;
 } 
 
