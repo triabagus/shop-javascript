@@ -23,8 +23,8 @@ let products = [
 
 for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
-        console.log('add cart');
-        cartNumbers();
+        // console.log('add cart');
+        cartNumbers(products[i]);
     });
 }
 
@@ -37,15 +37,16 @@ function onLoadCartNumbers() {
 }
 
 // Cart number to local storage
-function cartNumbers() {
+function cartNumbers(product) {
+    // console.log('product click is', product);
     // get item local storage
     let productNumbers = localStorage.getItem('cartNumbers');
-    console.log(productNumbers);
-    console.log(typeof productNumbers); //string value type for local storage
+    // console.log(productNumbers);
+    // console.log(typeof productNumbers); //string value type for local storage
     
     // convert to integer
     productNumbers = parseInt(productNumbers);
-    console.log(typeof productNumbers); //number value type for local storage
+    // console.log(typeof productNumbers); //number value type for local storage
 
     //condition for NaN productNumbers
     if (productNumbers) {
@@ -57,6 +58,36 @@ function cartNumbers() {
         document.querySelector('.cart span').textContent = 1;
     }
 
+    //set item product from local storage
+    setItems(product);
+}
+
+// set item product function
+function setItems(product) {
+    // console.log('Inside of setItems function');
+    // console.log('My product is', product);
+    let cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems);
+
+    // condition for inCart count local storage product
+    if (cartItems != null) {
+
+        // condition for cart product tag undefined on local storage
+        if (cartItems[product.tag] == undefined) {
+            cartItems = {
+                ...cartItems, // cart items loop
+                [product.tag] :product
+            }
+        }
+        cartItems[product.tag].inCart += 1;
+    } else {     
+        product.inCart = 1;
+        cartItems = {
+            [product.tag]: product
+        }
+    }
+
+    localStorage.setItem('productInCart', JSON.stringify(cartItems));
 }
 
 // on load page
