@@ -77,7 +77,82 @@
 
     <!-- checkout -->
     <div class="container mt-2">
-        checkout
+        <div class="row">
+            <div class="col-75">
+                <div class="container-color">
+                <!-- form -->
+                <form action="">     
+                    <div class="row">
+                        <!-- Billing Address -->
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <label for="name">Full Name</label>
+                            <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Tria Bagus N T">
+                            
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="example@email.com">
+
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address" class="form-control" placeholder="542 West Street">
+
+                            <label for="city">City</label>
+                            <input type="text" name="city" id="city" class="form-control" placeholder="Batu Indonesia">
+
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="state">State</label>
+                                    <input type="text" name="state" id="state" class="form-control" placeholder="ID">
+                                </div>
+
+                                <div class="col-50">
+                                    <label for="zip">Zip</label>
+                                    <input type="text" name="zip" id="zip" class="form-control" placeholder="10101">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Billing Address -->
+                        <!-- Payment -->
+                        <div class="col-50">
+                            <h3>Payments</h3>
+                            <label for="acc">Accepted Card</label>
+                            <div class="icon-container">
+                                visa
+                            </div>
+
+                            <label for="cname">Name on Card</label>
+                            <input type="text" name="cname" id="cname" class="form-control" placeholder="Tria Bagus Nur Taufik">
+
+                            <label for="ccnum">Credit Card Number</label>
+                            <input type="text" name="ccnum" id="ccnum" class="form-control" placeholder="1111-2222-3333-4444">
+
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" name="expmonth" id="expmonth" class="form-control" placeholder="November">
+
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" name="expyear" id="expyear" class="form-control" placeholder="2023">
+                                </div>
+
+                                <div class="col-50">
+                                    <label for="ccv">CCV</label>
+                                    <input type="text" name="ccv" id="ccv" class="form-control" placeholder="705">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- End Payment -->
+                    </div>
+                    <label> 
+                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                    </label>
+                    <button type="submit" class="btn btn-checkout">Continue to Checkout</button>
+                </form>
+                <!-- end form -->
+                </div>
+            </div>
+
+        </div>
     </div>     
 
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>

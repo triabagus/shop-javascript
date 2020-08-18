@@ -378,6 +378,7 @@ nav ul li a:hover{
     background-image: none;
     border: 1px solid  #ccc;
     border-radius: 4px;
+    outline:none;
 }
 
 .input-group-addon {
@@ -420,6 +421,7 @@ nav ul li a:hover{
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    outline: none;
 }
 
 .text-center{
@@ -428,6 +430,54 @@ nav ul li a:hover{
 
 .th-qty{
     width: 140px; 
+}
+
+/* row flex */
+
+.row{
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    margin:0 -15px;
+}
+
+.col-25{
+    -ms-flex:25%;
+    flex:25%;
+}
+
+.col-50{
+    -ms-flex:50%;
+    flex:50%;
+}
+
+.col-75{
+    -ms-flex:75%;
+    flex:75%;
+}
+
+.col-25, .col-50, .col-75{
+    padding :0 15px;
+}
+
+.container-color{
+    background:#f2f2f2;
+    padding:5px 20px 15px 20px;
+    border:1px solid lightgrey;
+    border-radius:5px;
+}
+
+label{
+    margin-top:10px;
+    margin-bottom:10px;
+    display:block;
+}
+
+.icon-container {
+    margin-bottom: 10px;
+    padding: 5px 0;
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 600px) {
