@@ -37,11 +37,28 @@ function onLoadCartNumbers() {
     let badgeProductNumber = document.querySelector('.shopping-cart-header .badge');
     let dollarSpan = document.querySelector('.dollar');
 
-    if (productNumbers || totalCost) {
+    let cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems);
+    let shoppingCartItems = document.querySelector('.shopping-cart-items');
+
+
+    if (productNumbers || totalCost || cartItems) {
         cartProductNumber.textContent = productNumbers;
         badgeProductNumber.textContent = productNumbers;
         dollarSpan.textContent = '$';
         dollarSpan.textContent += totalCost;
+
+        shoppingCartItems.innerHTML = ``; 
+        Object.values(cartItems).map(item => {
+            shoppingCartItems.innerHTML += ` 
+            <li class="clearfix">
+                <img src="./images/${item.tag}.png" alt="${item.tag}" />
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${item.price}</span>
+                <span class="item-quantity">Quantity: ${item.inCart}</span>
+            </li> 
+            `
+        });
     }
 }
 
