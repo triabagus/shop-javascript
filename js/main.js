@@ -25,6 +25,7 @@ for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
         // console.log('add cart');
         cartNumbers(products[i]);
+        totalCost(products[i]);
     });
 }
 
@@ -71,7 +72,6 @@ function setItems(product) {
 
     // condition for inCart count local storage product
     if (cartItems != null) {
-
         // condition for cart product tag undefined on local storage
         if (cartItems[product.tag] == undefined) {
             cartItems = {
@@ -88,6 +88,19 @@ function setItems(product) {
     }
 
     localStorage.setItem('productInCart', JSON.stringify(cartItems));
+}
+
+// function total cost
+function totalCost(product) {
+    // console.log('price product is', product.price);
+    let cartCost = localStorage.getItem('totalCost');
+    
+    if (cartCost != null) {
+        cartCost = parseInt(cartCost);
+        localStorage.setItem('totalCost', cartCost + product.price);
+    } else {
+        localStorage.setItem('totalCost', product.price);
+    }
 }
 
 // on load page
