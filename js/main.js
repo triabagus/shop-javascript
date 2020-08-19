@@ -6,13 +6,13 @@
 
 let carts = document.querySelectorAll('.add-cart');
 let products = [
-    {
+    { 
         name: 'Garden Vase',
         tag: 'vaseGarden',
         price: 25,
         inCart: 0
     },
-    {
+    { 
         name: 'Harvest Vase',
         tag: 'vaseHarvest',
         price: 78,
@@ -25,7 +25,7 @@ for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
         // console.log('add cart');
         cartNumbers(products[i]);
-        totalCost(products[i]);
+        totalCost(products[i]); 
     });
 }
 
@@ -184,15 +184,15 @@ function displayCart() {
                     <td>
                         <div class="input-group bootstrap-touchspin">
                             <span class="input-group-btn">
-                                <button class="btns btn-default bootstrap-touchspin-down" type="button">-</button>
+                                <button class="btns btn-default bootstrap-touchspin-down " type="button" onclick="decrement('${item.tag}')">-</button>
                             </span>
                             <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;">
                             </span>
-                            <input type="text" name="" value="${item.inCart}" class="input-qty form-control text-center" style="display: block;">
+                            <input id="${item.tag}" type="text" name="qty" value="${item.inCart}" class="input-qty form-control text-center" style="display: block;">
                             <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;">
                             </span>
                             <span class="input-group-btn">
-                                <button class="btns btn-default bootstrap-touchspin-up" type="button">+</button>
+                                <button class="btns btn-default bootstrap-touchspin-up" type="button" onclick="increment('${item.tag}')">+</button>
                             </span>
                         </div>
                     </td>
@@ -224,8 +224,33 @@ function displayCart() {
             </td> 
         </tr>
         `
-    }
-} 
+    } 
+}
+
+// increment
+function increment(product) { 
+    // console.log('increment', product);
+    let cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems); 
+    let input = document.getElementById(product); 
+    console.log(input);
+    cartItems[product].inCart += 1; 
+    localStorage.setItem('productInCart', JSON.stringify(cartItems)); 
+}
+ 
+
+// decrement
+function decrement(product) { 
+    // console.log('decrement', product);
+    let cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems); 
+    let input = document.getElementById(product); 
+    console.log(input);
+
+    cartItems[product].inCart -= 1;
+    localStorage.setItem('productInCart', JSON.stringify(cartItems)); 
+}
+ 
 
 // on load page
 onLoadCartNumbers();
