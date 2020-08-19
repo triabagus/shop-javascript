@@ -215,6 +215,14 @@ function displayCart() {
             <td colspan="5" ></td>
             <td colspan="1"> Total : <span>$ ${cartCost},00</span></td>
         </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td colspan="2">
+                <a href="checkout.html" class="btn btn-checkout">
+                    Checkout
+                </a>
+            </td> 
+        </tr>
         `
     }
 } 

@@ -487,6 +487,11 @@ button{
     cursor:pointer;
 }
 
+.link-shop{
+   color:#ff5722;
+   text-decoration: none;
+}
+
 @media only screen and (max-width: 600px) {
     .shopping-cart {
         width:260px;
