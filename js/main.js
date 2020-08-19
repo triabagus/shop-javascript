@@ -32,8 +32,16 @@ for (let i = 0; i < carts.length; i++) {
 // onLoadCartNumbers from Local Storage 
 function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
-    if (productNumbers) {
-        document.querySelector('.cart span').textContent = productNumbers;
+    let totalCost = localStorage.getItem('totalCost');
+    let cartProductNumber = document.querySelector('.cart span');
+    let badgeProductNumber = document.querySelector('.shopping-cart-header .badge');
+    let dollarSpan = document.querySelector('.dollar');
+
+    if (productNumbers || totalCost) {
+        cartProductNumber.textContent = productNumbers;
+        badgeProductNumber.textContent = productNumbers;
+        dollarSpan.textContent = '$';
+        dollarSpan.textContent += totalCost;
     }
 }
 
@@ -41,22 +49,26 @@ function onLoadCartNumbers() {
 function cartNumbers(product) {
     // console.log('product click is', product);
     // get item local storage
-    let productNumbers = localStorage.getItem('cartNumbers');
+    let productNumbers = localStorage.getItem('cartNumbers'); 
     // console.log(productNumbers);
     // console.log(typeof productNumbers); //string value type for local storage
     
     // convert to integer
-    productNumbers = parseInt(productNumbers);
+    productNumbers = parseInt(productNumbers); 
     // console.log(typeof productNumbers); //number value type for local storage
+    let cartProductNumber = document.querySelector('.cart span');
+    let badgeProductNumber = document.querySelector('.shopping-cart-header .badge');
 
     //condition for NaN productNumbers
     if (productNumbers) {
         // set item to local storage
         localStorage.setItem('cartNumbers', productNumbers + 1);
-        document.querySelector('.cart span').textContent = productNumbers + 1;
+        cartProductNumber.textContent = productNumbers + 1;
+        badgeProductNumber.textContent = productNumbers + 1; 
     } else {
         localStorage.setItem('cartNumbers', 1);
-        document.querySelector('.cart span').textContent = 1;
+        cartProductNumber.textContent = 1;
+        badgeProductNumber.textContent = 1; 
     }
 
     //set item product from local storage
@@ -94,12 +106,17 @@ function setItems(product) {
 function totalCost(product) {
     // console.log('price product is', product.price);
     let cartCost = localStorage.getItem('totalCost');
+    let dollarSpan = document.querySelector('.dollar');
     
     if (cartCost != null) {
         cartCost = parseInt(cartCost);
-        localStorage.setItem('totalCost', cartCost + product.price);
+        localStorage.setItem('totalCost', cartCost + product.price); 
+        dollarSpan.textContent = '$';
+        dollarSpan.textContent += cartCost + product.price;
     } else {
-        localStorage.setItem('totalCost', product.price);
+        localStorage.setItem('totalCost', product.price); 
+        dollarSpan.textContent = '$';
+        dollarSpan.textContent += product.price;
     }
 }
 
