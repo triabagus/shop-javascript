@@ -197,7 +197,7 @@ function displayCart() {
                         </div>
                     </td>
                     <td>$ ${item.price},00</td>
-                    <td>$ ${item.price * item.inCart},00</td> 
+                    <td id="subTotal-${item.tag}">$ ${item.price * item.inCart},00</td> 
                 </tr"> 
             `
         })
@@ -213,7 +213,7 @@ function displayCart() {
         </tr>
         <tr>
             <td colspan="5" ></td>
-            <td colspan="1"> Total : <span>$ ${cartCost},00</span></td>
+            <td colspan="1"> Total : <span id="totalPrice">$ ${cartCost},00</span></td>
         </tr>
         <tr>
             <td colspan="4"></td>
@@ -232,9 +232,18 @@ function increment(product) {
     // console.log('increment', product);
     let cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems); 
-    let input = document.getElementById(product); 
-    console.log(input);
+    let cartCost = localStorage.getItem('totalCost');
+    cartCost = parseInt(cartCost);
+    let input = document.getElementById(product);  
+    let subTotal = document.getElementById('subTotal-' + product);
+    let total = document.getElementById('totalPrice');   
+    
     cartItems[product].inCart += 1; 
+    input.value = cartItems[product].inCart;
+    subTotal.textContent = '$ ' + cartItems[product].inCart * cartItems[product].price + ',00';
+    total.textContent = '$ ' + (cartCost + cartItems[product].price) + ',00';
+
+    localStorage.setItem('totalCost', cartCost + cartItems[product].price); 
     localStorage.setItem('productInCart', JSON.stringify(cartItems)); 
 }
  
@@ -243,11 +252,19 @@ function increment(product) {
 function decrement(product) { 
     // console.log('decrement', product);
     let cartItems = localStorage.getItem('productInCart');
-    cartItems = JSON.parse(cartItems); 
-    let input = document.getElementById(product); 
-    console.log(input);
-
+    cartItems = JSON.parse(cartItems);
+    let cartCost = localStorage.getItem('totalCost');
+    cartCost = parseInt(cartCost); 
+    let input = document.getElementById(product);  
+    let subTotal = document.getElementById('subTotal-' + product);
+    let total = document.getElementById('totalPrice'); 
+    
     cartItems[product].inCart -= 1;
+    input.value = cartItems[product].inCart;
+    subTotal.textContent = '$ ' + cartItems[product].inCart * cartItems[product].price + ',00';
+    total.textContent = '$ ' + (cartCost - cartItems[product].price) + ',00';
+
+    localStorage.setItem('totalCost', cartCost - cartItems[product].price); 
     localStorage.setItem('productInCart', JSON.stringify(cartItems)); 
 }
  
