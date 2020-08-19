@@ -106,6 +106,8 @@ nav ul li a:hover{
     float: left;
     margin-right: 12px;
     border-radius: 5px;
+    width: 50px;
+    height: auto;
 }
 
 .shopping-cart-items .item-name{

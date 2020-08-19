@@ -81,6 +81,7 @@ function setItems(product) {
     // console.log('My product is', product);
     let cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
+    let shoppingCartItems = document.querySelector('.shopping-cart-items');
 
     // condition for inCart count local storage product
     if (cartItems != null) {
@@ -92,11 +93,35 @@ function setItems(product) {
             }
         }
         cartItems[product.tag].inCart += 1;
+
+        shoppingCartItems.innerHTML = ``; 
+        Object.values(cartItems).map(item => {
+            shoppingCartItems.innerHTML += ` 
+            <li class="clearfix">
+                <img src="./images/${item.tag}.png" alt="${item.tag}" />
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${item.price}</span>
+                <span class="item-quantity">Quantity: ${item.inCart}</span>
+            </li> 
+            `
+        });
     } else {     
         product.inCart = 1;
         cartItems = {
             [product.tag]: product
-        }
+        } 
+        
+        shoppingCartItems.innerHTML = ``; 
+        Object.values(cartItems).map(item => {
+            shoppingCartItems.innerHTML += ` 
+            <li class="clearfix">
+                <img src="./images/${item.tag}.png" alt="${item.tag}" />
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${item.price}</span>
+                <span class="item-quantity">Quantity: ${item.inCart}</span>
+            </li> 
+            `
+        });  
     }
 
     localStorage.setItem('productInCart', JSON.stringify(cartItems));
