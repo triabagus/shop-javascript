@@ -107,6 +107,7 @@ function totalCost(product) {
 function displayCart() {
     let cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
+    let cartCost = localStorage.getItem('totalCost');
 
     let productContainer = document.querySelector('.product-container');
     if (cartItems && productContainer) {
@@ -136,11 +137,26 @@ function displayCart() {
                             </span>
                         </div>
                     </td>
-                    <td>$ ${item.price}</td>
-                    <td>100</td> 
+                    <td>$ ${item.price},00</td>
+                    <td>$ ${item.price * item.inCart},00</td> 
                 </tr"> 
             `
         })
+
+        productContainer.innerHTML += `
+        <tr>
+            <td colspan="5"></td>
+            <td colspan="1"> Tax : <span>0</span></td>
+        </tr>
+        <tr>
+            <td colspan="5" ></td>
+            <td colspan="1"> Diskon : <span>0%</span></td>
+        </tr>
+        <tr>
+            <td colspan="5" ></td>
+            <td colspan="1"> Total : <span>$ ${cartCost},00</span></td>
+        </tr>
+        `
     }
 } 
 
