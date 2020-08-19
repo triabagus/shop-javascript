@@ -8,13 +8,13 @@ let carts = document.querySelectorAll('.add-cart');
 let products = [
     {
         name: 'Garden Vase',
-        tag: 'vase garden',
+        tag: 'vaseGarden',
         price: 25,
         inCart: 0
     },
     {
         name: 'Harvest Vase',
-        tag: 'vase harvest',
+        tag: 'vaseHarvest',
         price: 78,
         inCart: 0
     }
@@ -103,5 +103,47 @@ function totalCost(product) {
     }
 }
 
+// fucntion display cart
+function displayCart() {
+    let cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems);
+
+    let productContainer = document.querySelector('.product-container');
+    if (cartItems && productContainer) {
+        productContainer.innerHTML = ``;
+        Object.values(cartItems).map(item => {
+            productContainer.innerHTML += ` 
+                <tr">
+                    <td>
+                        <ion-icon name="trash"> </ion-icon>
+                    </td>
+                    <td>
+                        <img src="images/${item.tag}.png" alt="${item.tag}" title="" width="45" height="45"> 
+                    </td>
+                    <td>${item.name}</td>
+                    <td>
+                        <div class="input-group bootstrap-touchspin">
+                            <span class="input-group-btn">
+                                <button class="btns btn-default bootstrap-touchspin-down" type="button">-</button>
+                            </span>
+                            <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;">
+                            </span>
+                            <input type="text" name="" value="${item.inCart}" class="input-qty form-control text-center" style="display: block;">
+                            <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;">
+                            </span>
+                            <span class="input-group-btn">
+                                <button class="btns btn-default bootstrap-touchspin-up" type="button">+</button>
+                            </span>
+                        </div>
+                    </td>
+                    <td>$ ${item.price}</td>
+                    <td>100</td> 
+                </tr"> 
+            `
+        })
+    }
+} 
+
 // on load page
 onLoadCartNumbers();
+displayCart();
