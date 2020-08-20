@@ -175,7 +175,7 @@ function displayCart() {
             productContainer.innerHTML += ` 
                 <tr">
                     <td>
-                        <ion-icon name="trash"> </ion-icon>
+                        <ion-icon name="trash" onclick="deleteItem('${item.tag}')"> </ion-icon>
                     </td>
                     <td>
                         <img src="images/${item.tag}.png" alt="${item.tag}" title="" width="45" height="45"> 
@@ -244,7 +244,31 @@ function increment(product) {
     total.textContent = '$ ' + (cartCost + cartItems[product].price) + ',00';
 
     localStorage.setItem('totalCost', cartCost + cartItems[product].price); 
-    localStorage.setItem('productInCart', JSON.stringify(cartItems)); 
+    localStorage.setItem('productInCart', JSON.stringify(cartItems));
+    
+    // cart numbers
+    let productNumbers = localStorage.getItem('cartNumbers');
+    productNumbers = parseInt(productNumbers);  
+    let cartProductNumber = document.querySelector('.cart span');
+    let badgeProductNumber = document.querySelector('.shopping-cart-header .badge');
+    
+    if (productNumbers) {
+        // set item to local storage
+        localStorage.setItem('cartNumbers', productNumbers + 1);
+        cartProductNumber.textContent = productNumbers + 1;
+        badgeProductNumber.textContent = productNumbers + 1; 
+    }
+
+    // total cart
+    let dollarSpan = document.querySelector('.dollar');
+    
+    if (cartCost != null) { 
+        localStorage.setItem('totalCost', cartCost + cartItems[product].price); 
+        dollarSpan.textContent = '$';
+        dollarSpan.textContent += cartCost + cartItems[product].price;
+    }
+
+
 }
  
 
@@ -265,7 +289,41 @@ function decrement(product) {
     total.textContent = '$ ' + (cartCost - cartItems[product].price) + ',00';
 
     localStorage.setItem('totalCost', cartCost - cartItems[product].price); 
-    localStorage.setItem('productInCart', JSON.stringify(cartItems)); 
+    localStorage.setItem('productInCart', JSON.stringify(cartItems));
+    
+    // cart numbers
+    let productNumbers = localStorage.getItem('cartNumbers');
+    productNumbers = parseInt(productNumbers);  
+    let cartProductNumber = document.querySelector('.cart span');
+    let badgeProductNumber = document.querySelector('.shopping-cart-header .badge');
+    
+    if (productNumbers) {
+        // set item to local storage
+        localStorage.setItem('cartNumbers', productNumbers - 1);
+        cartProductNumber.textContent = productNumbers - 1;
+        badgeProductNumber.textContent = productNumbers - 1; 
+    }
+
+    // total cart
+    let dollarSpan = document.querySelector('.dollar');
+    
+    if (cartCost != null) { 
+        localStorage.setItem('totalCost', cartCost - cartItems[product].price); 
+        dollarSpan.textContent = '$';
+        dollarSpan.textContent += cartCost - cartItems[product].price;
+    }
+}
+
+// delete item
+function deleteItem(product) { 
+    let productItem = JSON.parse(localStorage.getItem('productInCart'));
+    // check item product
+    if (productItem[product]) {
+        delete productItem[product]; // delete item by tag product
+    }
+
+    // save item back
+    localStorage.setItem("productInCart", JSON.stringify(productItem));  
 }
  
 
