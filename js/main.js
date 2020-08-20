@@ -268,6 +268,9 @@ function increment(product) {
         dollarSpan.textContent += cartCost + cartItems[product].price;
     }
 
+    // qty cart
+    let itemQuantity = document.querySelector('.item-quantity');
+    itemQuantity.textContent = 'Quantity: ' + cartItems[product].inCart;
 
 }
  
@@ -312,6 +315,10 @@ function decrement(product) {
         dollarSpan.textContent = '$';
         dollarSpan.textContent += cartCost - cartItems[product].price;
     }
+
+    // qty cart
+    let itemQuantity = document.querySelector('.item-quantity');
+    itemQuantity.textContent = 'Quantity: ' - cartItems[product].inCart;
 }
 
 // delete item
