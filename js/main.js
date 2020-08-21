@@ -42,7 +42,7 @@ function onLoadCartNumbers() {
     let shoppingCartItems = document.querySelector('.shopping-cart-items');
 
 
-    if (productNumbers || totalCost || cartItems) {
+    if (productNumbers != 0 && totalCost != 0 && totalCost != null ) {
         cartProductNumber.textContent = productNumbers;
         badgeProductNumber.textContent = productNumbers;
         dollarSpan.textContent = '$';
@@ -168,8 +168,9 @@ function displayCart() {
     cartItems = JSON.parse(cartItems);
     let cartCost = localStorage.getItem('totalCost');
 
-    let productContainer = document.querySelector('.product-container');
-    if (cartItems && productContainer) {
+    let productContainer = document.querySelector('.product-container'); 
+
+    if (cartItems && productContainer && cartCost != 0 && cartCost != null) {
         productContainer.innerHTML = ``;
         Object.values(cartItems).map(item => {
             productContainer.innerHTML += ` 
@@ -285,8 +286,7 @@ function decrement(product) {
     let input = document.getElementById(product);  
     let subTotal = document.getElementById('subTotal-' + product);
     let total = document.getElementById('totalPrice'); 
-
-    console.log(subTotal);
+ 
     
     cartItems[product].inCart -= 1;
     input.value = cartItems[product].inCart;
@@ -321,6 +321,8 @@ function decrement(product) {
     // qty cart
     let itemQuantity = document.querySelector('.quantity-'+ product);
     itemQuantity.textContent = 'Quantity: ' + cartItems[product].inCart; 
+
+    // condition qty 0 
 }
 
 // delete item
@@ -357,8 +359,9 @@ function deleteItem(product) {
     }
     // save item back
     localStorage.setItem("productInCart", JSON.stringify(productItem));
-    displayCart();
+    
     onLoadCartNumbers();
+    displayCart();
 }
 
 
