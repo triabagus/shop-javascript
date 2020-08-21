@@ -55,7 +55,7 @@ function onLoadCartNumbers() {
                 <img src="./images/${item.tag}.png" alt="${item.tag}" />
                 <span class="item-name">${item.name}</span>
                 <span class="item-price">$${item.price}</span>
-                <span class="item-quantity">Quantity: ${item.inCart}</span>
+                <span class="item-quantity quantity-${item.tag}">Quantity: ${item.inCart}</span>
             </li> 
             `
         });
@@ -118,7 +118,7 @@ function setItems(product) {
                 <img src="./images/${item.tag}.png" alt="${item.tag}" />
                 <span class="item-name">${item.name}</span>
                 <span class="item-price">$${item.price}</span>
-                <span class="item-quantity">Quantity: ${item.inCart}</span>
+                <span class="item-quantity quantity-${item.tag}">Quantity: ${item.inCart}</span>
             </li> 
             `
         });
@@ -135,7 +135,7 @@ function setItems(product) {
                 <img src="./images/${item.tag}.png" alt="${item.tag}" />
                 <span class="item-name">${item.name}</span>
                 <span class="item-price">$${item.price}</span>
-                <span class="item-quantity">Quantity: ${item.inCart}</span>
+                <span class="item-quantity quantity-${item.tag}">Quantity: ${item.inCart}</span>
             </li> 
             `
         });  
@@ -269,7 +269,7 @@ function increment(product) {
     }
 
     // qty cart
-    let itemQuantity = document.querySelector('.item-quantity');
+    let itemQuantity = document.querySelector('.quantity-'+ product);
     itemQuantity.textContent = 'Quantity: ' + cartItems[product].inCart;
 
 }
@@ -285,6 +285,8 @@ function decrement(product) {
     let input = document.getElementById(product);  
     let subTotal = document.getElementById('subTotal-' + product);
     let total = document.getElementById('totalPrice'); 
+
+    console.log(subTotal);
     
     cartItems[product].inCart -= 1;
     input.value = cartItems[product].inCart;
@@ -317,22 +319,48 @@ function decrement(product) {
     }
 
     // qty cart
-    let itemQuantity = document.querySelector('.item-quantity');
-    itemQuantity.textContent = 'Quantity: ' - cartItems[product].inCart;
+    let itemQuantity = document.querySelector('.quantity-'+ product);
+    itemQuantity.textContent = 'Quantity: ' + cartItems[product].inCart; 
 }
 
 // delete item
 function deleteItem(product) { 
     let productItem = JSON.parse(localStorage.getItem('productInCart'));
+    let cartCost = localStorage.getItem('totalCost');
+    cartCost = parseInt(cartCost); 
+
+    // cart price
+    let dollarSpan = document.querySelector('.dollar'); 
+
+    if (cartCost != null) { 
+        localStorage.setItem('totalCost', cartCost - productItem[product].price * productItem[product].inCart); 
+        dollarSpan.textContent = '$ ';
+        dollarSpan.textContent += cartCost - productItem[product].price * productItem[product].inCart;
+    }
+
+    // Cart number decrement
+    let productNumbers = localStorage.getItem('cartNumbers');
+    productNumbers = parseInt(productNumbers);  
+    let cartProductNumber = document.querySelector('.cart span');
+    let badgeProductNumber = document.querySelector('.shopping-cart-header .badge');
+    
+    if (productNumbers) {
+        // set item to local storage
+        localStorage.setItem('cartNumbers', productNumbers - productItem[product].inCart);
+        cartProductNumber.textContent = productNumbers - productItem[product].inCart;
+        badgeProductNumber.textContent = productNumbers - productItem[product].inCart; 
+    } 
+
     // check item product
     if (productItem[product]) {
         delete productItem[product]; // delete item by tag product
     }
-
     // save item back
-    localStorage.setItem("productInCart", JSON.stringify(productItem));  
+    localStorage.setItem("productInCart", JSON.stringify(productItem));
+    displayCart();
+    onLoadCartNumbers();
 }
- 
+
 
 // on load page
 onLoadCartNumbers();
