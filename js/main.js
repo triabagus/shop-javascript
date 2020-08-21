@@ -64,6 +64,7 @@ function onLoadCartNumbers() {
     // local storage remove all condition
     if (productNumbers == 0) {
         localStorage.clear(); 
+        location.reload();
     }
 }
 
@@ -175,7 +176,7 @@ function displayCart() {
 
     let productContainer = document.querySelector('.product-container'); 
 
-    if (cartItems !=null && productContainer  && cartCost != null) {
+    if (cartItems != null && productContainer  && cartCost != null) {
         productContainer.innerHTML = ``;
         Object.values(cartItems).map(item => {
             productContainer.innerHTML += ` 
