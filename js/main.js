@@ -322,7 +322,10 @@ function decrement(product) {
     let itemQuantity = document.querySelector('.quantity-'+ product);
     itemQuantity.textContent = 'Quantity: ' + cartItems[product].inCart; 
 
-    // condition qty 0 
+    // condition qty 0
+    if (cartItems[product].inCart == 0) {
+        deleteItem(product);
+    }
 }
 
 // delete item
