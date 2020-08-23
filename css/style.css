@@ -73,7 +73,7 @@ nav ul li a:hover{
     position: absolute;
     padding: 20px;
     border-radius: 5px; 
-    right:100px;
+    right:100px!important;
     width: 302px;
     z-index:20;
 }
@@ -522,16 +522,54 @@ button{
         flex: 0 0 50%;
         max-width: 50%;
     }
+} 
+
+
+@media only screen and (min-width: 425px) { 
+    .shopping-cart { 
+        right:30px!important;
+    }
 }
 
-@media only screen and (max-width: 600px) { 
+@media only screen and (min-width: 375px) { 
+    .shopping-cart { 
+        right:25px!important;
+    }
+}
+
+@media only screen and (min-width: 320px) { 
+    .shopping-cart { 
+        right:20px!important;
+    }
+}
+
+@media only screen and (min-width: 600px) { 
     .shopping-cart {
-        width:260px;
+        width:260px; 
+    }
+}
+
+@media only screen and (min-width: 700px) { 
+    .shopping-cart { 
+        right:45px!important;
+    }
+}
+
+@media only screen and (min-width: 1024px) { 
+    .shopping-cart { 
+        right:100px!important;
+    }
+}
+
+
+@media only screen and (min-width: 2560px) { 
+    .shopping-cart { 
+        right:230px!important;
     }
 }
 
 @media only screen and (max-width: 700px) { 
-    .col-50{
+     .col-50{
         flex: 100%;
         ms-flex:100%;
     }
