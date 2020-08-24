@@ -1,9 +1,11 @@
-(function(){
+// Cart click function
+(function () {
     $("#cart").on("click", function() {
         $(".shopping-cart").fadeToggle( "fast");
     });
 })();
 
+// Variable cart and product 
 let carts = document.querySelectorAll('.add-cart');
 let products = [
     { 
@@ -20,7 +22,7 @@ let products = [
     }
 ]
 
-
+// Loop cart data
 for (let i = 0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
         // console.log('add cart');
